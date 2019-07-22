@@ -35,9 +35,9 @@ alertmanager:
   ## alertmanager container image
   ##
   image:
-    repository: prom/alertmanager
-    tag: v0.17.0
-    pullPolicy: IfNotPresent
+    repository: carlosedp/alertmanager
+    tag: v0.16.2
+    pullPolicy: Always
 
   ## alertmanager priorityClassName
   ##
@@ -181,7 +181,7 @@ alertmanager:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "local-path"
 
     ## Subdirectory of alertmanager data Persistent Volume to mount
     ## Useful if the volume's root directory is not empty
@@ -252,7 +252,7 @@ alertmanager:
     type: ClusterIP
 
 ## Monitors ConfigMap changes and POSTs to a URL
-## Ref: https://github.com/jimmidyson/configmap-reload
+## Ref: https://github.com/geekdave/configmap-reload-arm
 ##
 configmapReload:
   ## configmap-reload container name
@@ -262,9 +262,9 @@ configmapReload:
   ## configmap-reload container image
   ##
   image:
-    repository: jimmidyson/configmap-reload
-    tag: v0.2.2
-    pullPolicy: IfNotPresent
+    repository: carlosedp/configmap-reload
+    tag: v0.2.2-arm
+    pullPolicy: Always
 
   ## Additional configmap-reload container arguments
   ##
@@ -323,9 +323,9 @@ kubeStateMetrics:
   ## kube-state-metrics container image
   ##
   image:
-    repository: quay.io/coreos/kube-state-metrics
-    tag: v1.6.0
-    pullPolicy: IfNotPresent
+    repository: carlosedp/kube-state-metrics
+    tag: v1.5.0
+    pullPolicy: Always
 
   ## kube-state-metrics priorityClassName
   ##
@@ -412,9 +412,9 @@ nodeExporter:
   ## node-exporter container image
   ##
   image:
-    repository: prom/node-exporter
-    tag: v0.18.0
-    pullPolicy: IfNotPresent
+    repository: carlosedp/node_exporter
+    tag: v0.17.0
+    pullPolicy: Always
 
   ## Specify if a Pod Security Policy for node-exporter must be created
   ## Ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
@@ -528,7 +528,7 @@ server:
   image:
     repository: prom/prometheus
     tag: v2.10.0
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
 
   ## prometheus server priorityClassName
   ##
@@ -718,7 +718,7 @@ server:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "local-path"
 
     ## Subdirectory of Prometheus server data Persistent Volume to mount
     ## Useful if the volume's root directory is not empty
@@ -808,9 +808,9 @@ pushgateway:
   ## pushgateway container image
   ##
   image:
-    repository: prom/pushgateway
+    repository: carlosedp/pushgateway
     tag: v0.8.0
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
 
   ## pushgateway priorityClassName
   ##
@@ -935,7 +935,7 @@ pushgateway:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "local-path"
 
     ## Subdirectory of alertmanager data Persistent Volume to mount
     ## Useful if the volume's root directory is not empty
